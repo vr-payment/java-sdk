@@ -8,7 +8,7 @@
     <artifactId>vrpayment-java-sdk</artifactId>
     <packaging>jar</packaging>
     <name>vrpayment-java-sdk</name>
-    <version>9.0.0</version>
+    <version>8.7.1</version>
     <url>https://www.vr-payment.de/</url>
     <description>The SDK for simplifying the integration with VR Payment API.</description>
 
@@ -51,8 +51,8 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>[3.2,3.9.9]</version>
-                                    <message>Invalid Maven version. It should be between 3.2 and 3.9.9 inclusive.</message>
+                                    <version>[3.2,3.9.10]</version>
+                                    <message>Invalid Maven version. It should be between 3.2 and 3.9.10 inclusive.</message>
                                 </requireMavenVersion>
                             </rules>
                         </configuration>

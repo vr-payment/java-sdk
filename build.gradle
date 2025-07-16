@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'de.vr_payment'
-version = '9.0.0'
+version = '8.7.1'
 
 buildscript {
     repositories {
