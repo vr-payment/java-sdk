@@ -59,7 +59,7 @@ public class DunningCaseService {
     * @return Long
     * @throws IOException if an error occurs while attempting to invoke the API
     * For more information visit this link.
-    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#dunning-case-service--count">Count Documentation</a>
+    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service/v1#dunning-case-service--count">Count Documentation</a>
 
     **/
     public Long count(Long spaceId, EntityQueryFilter filter) throws IOException {
@@ -87,7 +87,7 @@ public class DunningCaseService {
     * @return Long
     * @throws IOException if an error occurs while attempting to invoke the API
     * For more information visit this link.
-    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#dunning-case-service--count">Count Documentation</a>
+    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service/v1#dunning-case-service--count">Count Documentation</a>
 
     **/
     public Long count(EntityQueryFilter filter, Long spaceId, Map<String, Object> params) throws IOException {
@@ -193,7 +193,7 @@ public class DunningCaseService {
     * @return DunningCase
     * @throws IOException if an error occurs while attempting to invoke the API
     * For more information visit this link.
-    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#dunning-case-service--create-from-invoice">Create Dunning Case Documentation</a>
+    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service/v1#dunning-case-service--create-from-invoice">Create Dunning Case Documentation</a>
 
     **/
     public DunningCase createFromInvoice(Long spaceId, Long invoiceId) throws IOException {
@@ -222,7 +222,7 @@ public class DunningCaseService {
     * @return DunningCase
     * @throws IOException if an error occurs while attempting to invoke the API
     * For more information visit this link.
-    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#dunning-case-service--create-from-invoice">Create Dunning Case Documentation</a>
+    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service/v1#dunning-case-service--create-from-invoice">Create Dunning Case Documentation</a>
 
     **/
     public DunningCase createFromInvoice(Long spaceId, Long invoiceId, Map<String, Object> params) throws IOException {
@@ -319,7 +319,7 @@ public class DunningCaseService {
     * @return DunningCase
     * @throws IOException if an error occurs while attempting to invoke the API
     * For more information visit this link.
-    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#dunning-case-service--read">Read Documentation</a>
+    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service/v1#dunning-case-service--read">Read Documentation</a>
 
     **/
     public DunningCase read(Long spaceId, Long id) throws IOException {
@@ -348,7 +348,7 @@ public class DunningCaseService {
     * @return DunningCase
     * @throws IOException if an error occurs while attempting to invoke the API
     * For more information visit this link.
-    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#dunning-case-service--read">Read Documentation</a>
+    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service/v1#dunning-case-service--read">Read Documentation</a>
 
     **/
     public DunningCase read(Long spaceId, Long id, Map<String, Object> params) throws IOException {
@@ -445,7 +445,7 @@ public class DunningCaseService {
     * @return List&lt;DunningCase&gt;
     * @throws IOException if an error occurs while attempting to invoke the API
     * For more information visit this link.
-    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#dunning-case-service--search">Search Documentation</a>
+    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service/v1#dunning-case-service--search">Search Documentation</a>
 
     **/
     public List<DunningCase> search(Long spaceId, EntityQuery query) throws IOException {
@@ -474,7 +474,7 @@ public class DunningCaseService {
     * @return List&lt;DunningCase&gt;
     * @throws IOException if an error occurs while attempting to invoke the API
     * For more information visit this link.
-    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#dunning-case-service--search">Search Documentation</a>
+    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service/v1#dunning-case-service--search">Search Documentation</a>
 
     **/
     public List<DunningCase> search(Long spaceId, EntityQuery query, Map<String, Object> params) throws IOException {
@@ -591,7 +591,7 @@ public class DunningCaseService {
     * @param plannedEndDate Optional planned end date of the suspension.
     * @throws IOException if an error occurs while attempting to invoke the API
     * For more information visit this link.
-    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#dunning-case-service--suspend">Suspend Dunning Case Documentation</a>
+    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service/v1#dunning-case-service--suspend">Suspend Dunning Case Documentation</a>
 
     **/
     public void suspend(Long spaceId, Long id, OffsetDateTime plannedEndDate) throws IOException {
@@ -609,7 +609,7 @@ public class DunningCaseService {
     * @param params Map of query params. A collection will be interpreted as passing in multiple instances of the same query param.
     * @throws IOException if an error occurs while attempting to invoke the API
     * For more information visit this link.
-    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#dunning-case-service--suspend">Suspend Dunning Case Documentation</a>
+    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service/v1#dunning-case-service--suspend">Suspend Dunning Case Documentation</a>
 
     **/
     public void suspend(Long spaceId, Long id, Map<String, Object> params) throws IOException {
