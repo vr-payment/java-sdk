@@ -8,7 +8,7 @@
     <artifactId>vrpayment-java-sdk</artifactId>
     <packaging>jar</packaging>
     <name>vrpayment-java-sdk</name>
-    <version>8.8.1</version>
+    <version>8.8.3</version>
     <url>https://www.vr-payment.de/</url>
     <description>The SDK for simplifying the integration with VR Payment API.</description>
 

@@ -21,7 +21,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>de.vr-payment</groupId>
     <artifactId>vrpayment-java-sdk</artifactId>
-    <version>8.8.1</version>
+    <version>8.8.3</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -31,7 +31,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "de.vr_payment:vrpayment-java-sdk:8.8.1"
+compile "de.vr_payment:vrpayment-java-sdk:8.8.3"
 ```
 
 ### Others
@@ -44,7 +44,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/vrpayment-java-sdk-8.8.1.jar`
+* `target/vrpayment-java-sdk-8.8.3.jar`
 * `target/lib/*.jar`
 
 ## Usage
