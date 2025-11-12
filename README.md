@@ -20,7 +20,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>de.vr-payment</groupId>
   <artifactId>vrpayment-java-sdk</artifactId>
-  <version>9.0.0</version>
+  <version>9.1.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -35,7 +35,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "de.vr-payment:vrpayment-java-sdk:9.0.0"
+     implementation "de.vr-payment:vrpayment-java-sdk:9.1.0"
   }
 ```
 
