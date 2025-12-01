@@ -19,12 +19,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.vrpayment.sdk.auth;
 
 import com.vrpayment.sdk.Pair;
 
 import java.util.Map;
 import java.util.List;
+
 
 public interface Authentication {
     /**
