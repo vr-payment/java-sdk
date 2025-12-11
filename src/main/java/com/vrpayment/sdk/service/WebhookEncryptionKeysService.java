@@ -45,7 +45,7 @@ import java.util.regex.Pattern;
 import java.security.Security;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import com.vrpayment.sdk.VRPaymentSdkException;
-import com.vrpayment.sdk.ErrorCode;
+import com.vrpayment.sdk.SdkExceptionErrorCodes;
 
 
 public class WebhookEncryptionKeysService extends BaseApi {
@@ -214,7 +214,7 @@ public class WebhookEncryptionKeysService extends BaseApi {
         }
         if (publicKey == null || publicKey.isEmpty()) {
           throw new VRPaymentSdkException(
-              ErrorCode.UNKNOWN_WEBHOOK_ENCRYPTION_PUBLIC_KEY,
+              SdkExceptionErrorCodes.UNKNOWN_WEBHOOK_ENCRYPTION_PUBLIC_KEY,
               "Unknown public key with ID: " + publicKeyId);
         }
         cache.put(publicKeyId, publicKey);
@@ -223,7 +223,7 @@ public class WebhookEncryptionKeysService extends BaseApi {
           contentToVerify, contentSignature, publicKey, encryptionProviderName, signatureAlgorithm);
     } else {
       throw new VRPaymentSdkException(
-          ErrorCode.INVALID_WEBHOOK_ENCRYPTION_HEADER_FORMAT,
+          SdkExceptionErrorCodes.INVALID_WEBHOOK_ENCRYPTION_HEADER_FORMAT,
           "Invalid webhook signature header. Expected format: 'algorithm=<algorithm>, keyId=<keyId>, signature=<signature>'");
     }
   }
