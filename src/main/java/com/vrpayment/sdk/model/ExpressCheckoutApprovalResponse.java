@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.vrpayment.sdk.model.ExpressCheckoutSessionState;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -36,103 +37,93 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * ExpressCheckoutCreateResponse
+ * ExpressCheckoutApprovalResponse
  */
 @JsonPropertyOrder({
-  ExpressCheckoutCreateResponse.JSON_PROPERTY_IFRAME_SRC,
-  ExpressCheckoutCreateResponse.JSON_PROPERTY_SESSION,
-  ExpressCheckoutCreateResponse.JSON_PROPERTY_SESSION_TOKEN
+  ExpressCheckoutApprovalResponse.JSON_PROPERTY_MERCHANT_REDIRECT_URL,
+  ExpressCheckoutApprovalResponse.JSON_PROPERTY_SESSION_ID,
+  ExpressCheckoutApprovalResponse.JSON_PROPERTY_STATE
 })
 
-public class ExpressCheckoutCreateResponse {
-  public static final String JSON_PROPERTY_IFRAME_SRC = "iframeSrc";
+public class ExpressCheckoutApprovalResponse {
+  public static final String JSON_PROPERTY_MERCHANT_REDIRECT_URL = "merchantRedirectUrl";
   @javax.annotation.Nullable
-  private String iframeSrc;
+  private String merchantRedirectUrl;
 
-  public static final String JSON_PROPERTY_SESSION = "session";
+  public static final String JSON_PROPERTY_SESSION_ID = "sessionId";
   @javax.annotation.Nullable
-  private Long session;
+  private Long sessionId;
 
-  public static final String JSON_PROPERTY_SESSION_TOKEN = "sessionToken";
+  public static final String JSON_PROPERTY_STATE = "state";
   @javax.annotation.Nullable
-  private String sessionToken;
+  private ExpressCheckoutSessionState state;
 
-  public ExpressCheckoutCreateResponse() {
+  public ExpressCheckoutApprovalResponse() {
+  }
+  /**
+   * Constructor with only readonly parameters
+   */
+  @JsonCreator
+  public ExpressCheckoutApprovalResponse(
+    @JsonProperty(JSON_PROPERTY_MERCHANT_REDIRECT_URL) String merchantRedirectUrl, 
+    @JsonProperty(JSON_PROPERTY_SESSION_ID) Long sessionId
+  ) {
+    this();
+    this.merchantRedirectUrl = merchantRedirectUrl;
+    this.sessionId = sessionId;
   }
 
-  public ExpressCheckoutCreateResponse iframeSrc(@javax.annotation.Nullable String iframeSrc) {
+  /**
+   * Get merchantRedirectUrl
+   * @return merchantRedirectUrl
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MERCHANT_REDIRECT_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getMerchantRedirectUrl() {
+    return merchantRedirectUrl;
+  }
+
+
+
+  /**
+   * Get sessionId
+   * @return sessionId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SESSION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Long getSessionId() {
+    return sessionId;
+  }
+
+
+
+  public ExpressCheckoutApprovalResponse state(@javax.annotation.Nullable ExpressCheckoutSessionState state) {
     
-    this.iframeSrc = iframeSrc;
+    this.state = state;
     return this;
   }
 
   /**
-   * Get iframeSrc
-   * @return iframeSrc
+   * Get state
+   * @return state
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IFRAME_SRC)
+  @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getIframeSrc() {
-    return iframeSrc;
+  public ExpressCheckoutSessionState getState() {
+    return state;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IFRAME_SRC)
+  @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIframeSrc(@javax.annotation.Nullable String iframeSrc) {
-    this.iframeSrc = iframeSrc;
-  }
-
-  public ExpressCheckoutCreateResponse session(@javax.annotation.Nullable Long session) {
-    
-    this.session = session;
-    return this;
-  }
-
-  /**
-   * Get session
-   * @return session
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SESSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Long getSession() {
-    return session;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SESSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSession(@javax.annotation.Nullable Long session) {
-    this.session = session;
-  }
-
-  public ExpressCheckoutCreateResponse sessionToken(@javax.annotation.Nullable String sessionToken) {
-    
-    this.sessionToken = sessionToken;
-    return this;
-  }
-
-  /**
-   * Get sessionToken
-   * @return sessionToken
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getSessionToken() {
-    return sessionToken;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSessionToken(@javax.annotation.Nullable String sessionToken) {
-    this.sessionToken = sessionToken;
+  public void setState(@javax.annotation.Nullable ExpressCheckoutSessionState state) {
+    this.state = state;
   }
 
   @Override
@@ -143,24 +134,24 @@ public class ExpressCheckoutCreateResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExpressCheckoutCreateResponse expressCheckoutCreateResponse = (ExpressCheckoutCreateResponse) o;
-    return Objects.equals(this.iframeSrc, expressCheckoutCreateResponse.iframeSrc) &&
-        Objects.equals(this.session, expressCheckoutCreateResponse.session) &&
-        Objects.equals(this.sessionToken, expressCheckoutCreateResponse.sessionToken);
+    ExpressCheckoutApprovalResponse expressCheckoutApprovalResponse = (ExpressCheckoutApprovalResponse) o;
+    return Objects.equals(this.merchantRedirectUrl, expressCheckoutApprovalResponse.merchantRedirectUrl) &&
+        Objects.equals(this.sessionId, expressCheckoutApprovalResponse.sessionId) &&
+        Objects.equals(this.state, expressCheckoutApprovalResponse.state);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(iframeSrc, session, sessionToken);
+    return Objects.hash(merchantRedirectUrl, sessionId, state);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExpressCheckoutCreateResponse {\n");
-    sb.append("    iframeSrc: ").append(toIndentedString(iframeSrc)).append("\n");
-    sb.append("    session: ").append(toIndentedString(session)).append("\n");
-    sb.append("    sessionToken: ").append(toIndentedString(sessionToken)).append("\n");
+    sb.append("class ExpressCheckoutApprovalResponse {\n");
+    sb.append("    merchantRedirectUrl: ").append(toIndentedString(merchantRedirectUrl)).append("\n");
+    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
+    sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -208,30 +199,30 @@ public class ExpressCheckoutCreateResponse {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `iframeSrc` to the URL query string
-    if (getIframeSrc() != null) {
+    // add `merchantRedirectUrl` to the URL query string
+    if (getMerchantRedirectUrl() != null) {
       try {
-        joiner.add(String.format("%siframeSrc%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIframeSrc()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%smerchantRedirectUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMerchantRedirectUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
       }
     }
 
-    // add `session` to the URL query string
-    if (getSession() != null) {
+    // add `sessionId` to the URL query string
+    if (getSessionId() != null) {
       try {
-        joiner.add(String.format("%ssession%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSession()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%ssessionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
       }
     }
 
-    // add `sessionToken` to the URL query string
-    if (getSessionToken() != null) {
+    // add `state` to the URL query string
+    if (getState() != null) {
       try {
-        joiner.add(String.format("%ssessionToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionToken()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%sstate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getState()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
