@@ -36,43 +36,44 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * ExpressCheckoutShippingMethodChangeRequest
+ * WebUiAccountTheme
  */
 @JsonPropertyOrder({
-  ExpressCheckoutShippingMethodChangeRequest.JSON_PROPERTY_SHIPPING_METHOD_ID
+  WebUiAccountTheme.JSON_PROPERTY_PROPERTIES
 })
 
-public class ExpressCheckoutShippingMethodChangeRequest {
-  public static final String JSON_PROPERTY_SHIPPING_METHOD_ID = "shippingMethodId";
+public class WebUiAccountTheme {
+  public static final String JSON_PROPERTY_PROPERTIES = "properties";
   @javax.annotation.Nullable
-  private String shippingMethodId;
+  private String properties;
 
-  public ExpressCheckoutShippingMethodChangeRequest() {
+  public WebUiAccountTheme() {
   }
-  /**
-   * Constructor with only readonly parameters
-   */
-  @JsonCreator
-  public ExpressCheckoutShippingMethodChangeRequest(
-    @JsonProperty(JSON_PROPERTY_SHIPPING_METHOD_ID) String shippingMethodId
-  ) {
-    this();
-    this.shippingMethodId = shippingMethodId;
+
+  public WebUiAccountTheme properties(@javax.annotation.Nullable String properties) {
+    
+    this.properties = properties;
+    return this;
   }
 
   /**
-   * Identifier of the selected shipping option.
-   * @return shippingMethodId
+   * Get properties
+   * @return properties
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHIPPING_METHOD_ID)
+  @JsonProperty(JSON_PROPERTY_PROPERTIES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getShippingMethodId() {
-    return shippingMethodId;
+  public String getProperties() {
+    return properties;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_PROPERTIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProperties(@javax.annotation.Nullable String properties) {
+    this.properties = properties;
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -82,20 +83,20 @@ public class ExpressCheckoutShippingMethodChangeRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExpressCheckoutShippingMethodChangeRequest expressCheckoutShippingMethodChangeRequest = (ExpressCheckoutShippingMethodChangeRequest) o;
-    return Objects.equals(this.shippingMethodId, expressCheckoutShippingMethodChangeRequest.shippingMethodId);
+    WebUiAccountTheme webUiAccountTheme = (WebUiAccountTheme) o;
+    return Objects.equals(this.properties, webUiAccountTheme.properties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(shippingMethodId);
+    return Objects.hash(properties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExpressCheckoutShippingMethodChangeRequest {\n");
-    sb.append("    shippingMethodId: ").append(toIndentedString(shippingMethodId)).append("\n");
+    sb.append("class WebUiAccountTheme {\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -143,10 +144,10 @@ public class ExpressCheckoutShippingMethodChangeRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `shippingMethodId` to the URL query string
-    if (getShippingMethodId() != null) {
+    // add `properties` to the URL query string
+    if (getProperties() != null) {
       try {
-        joiner.add(String.format("%sshippingMethodId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getShippingMethodId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%sproperties%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProperties()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

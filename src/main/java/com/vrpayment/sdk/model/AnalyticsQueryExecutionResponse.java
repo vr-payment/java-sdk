@@ -29,11 +29,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.vrpayment.sdk.model.LineItem;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -41,61 +36,40 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * ExpressCheckoutShippingMethodChangeResponse
+ * AnalyticsQueryExecutionResponse
  */
 @JsonPropertyOrder({
-  ExpressCheckoutShippingMethodChangeResponse.JSON_PROPERTY_LINE_ITEMS,
-  ExpressCheckoutShippingMethodChangeResponse.JSON_PROPERTY_ORDER_TOTAL
+  AnalyticsQueryExecutionResponse.JSON_PROPERTY_QUERY_TOKEN
 })
 
-public class ExpressCheckoutShippingMethodChangeResponse {
-  public static final String JSON_PROPERTY_LINE_ITEMS = "lineItems";
+public class AnalyticsQueryExecutionResponse {
+  public static final String JSON_PROPERTY_QUERY_TOKEN = "queryToken";
   @javax.annotation.Nullable
-  private List<LineItem> lineItems = new ArrayList<>();
+  private String queryToken;
 
-  public static final String JSON_PROPERTY_ORDER_TOTAL = "orderTotal";
-  @javax.annotation.Nullable
-  private BigDecimal orderTotal;
-
-  public ExpressCheckoutShippingMethodChangeResponse() {
+  public AnalyticsQueryExecutionResponse() {
   }
   /**
    * Constructor with only readonly parameters
    */
   @JsonCreator
-  public ExpressCheckoutShippingMethodChangeResponse(
-    @JsonProperty(JSON_PROPERTY_LINE_ITEMS) List<LineItem> lineItems, 
-    @JsonProperty(JSON_PROPERTY_ORDER_TOTAL) BigDecimal orderTotal
+  public AnalyticsQueryExecutionResponse(
+    @JsonProperty(JSON_PROPERTY_QUERY_TOKEN) String queryToken
   ) {
     this();
-    this.lineItems = lineItems;
-    this.orderTotal = orderTotal;
+    this.queryToken = queryToken;
   }
 
   /**
-   * Get lineItems
-   * @return lineItems
+   * The unique query token associated with a submitted analytics query execution. This token can be used to check the execution status of the query.
+   * @return queryToken
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LINE_ITEMS)
+  @JsonProperty(JSON_PROPERTY_QUERY_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<LineItem> getLineItems() {
-    return lineItems;
-  }
-
-
-
-  /**
-   * Get orderTotal
-   * @return orderTotal
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ORDER_TOTAL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public BigDecimal getOrderTotal() {
-    return orderTotal;
+  public String getQueryToken() {
+    return queryToken;
   }
 
 
@@ -108,22 +82,20 @@ public class ExpressCheckoutShippingMethodChangeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExpressCheckoutShippingMethodChangeResponse expressCheckoutShippingMethodChangeResponse = (ExpressCheckoutShippingMethodChangeResponse) o;
-    return Objects.equals(this.lineItems, expressCheckoutShippingMethodChangeResponse.lineItems) &&
-        Objects.equals(this.orderTotal, expressCheckoutShippingMethodChangeResponse.orderTotal);
+    AnalyticsQueryExecutionResponse analyticsQueryExecutionResponse = (AnalyticsQueryExecutionResponse) o;
+    return Objects.equals(this.queryToken, analyticsQueryExecutionResponse.queryToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lineItems, orderTotal);
+    return Objects.hash(queryToken);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExpressCheckoutShippingMethodChangeResponse {\n");
-    sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
-    sb.append("    orderTotal: ").append(toIndentedString(orderTotal)).append("\n");
+    sb.append("class AnalyticsQueryExecutionResponse {\n");
+    sb.append("    queryToken: ").append(toIndentedString(queryToken)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -171,20 +143,10 @@ public class ExpressCheckoutShippingMethodChangeResponse {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `lineItems` to the URL query string
-    if (getLineItems() != null) {
-      for (int i = 0; i < getLineItems().size(); i++) {
-        if (getLineItems().get(i) != null) {
-          joiner.add(getLineItems().get(i).toUrlQueryString(String.format("%slineItems%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
-        }
-      }
-    }
-
-    // add `orderTotal` to the URL query string
-    if (getOrderTotal() != null) {
+    // add `queryToken` to the URL query string
+    if (getQueryToken() != null) {
       try {
-        joiner.add(String.format("%sorderTotal%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrderTotal()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%squeryToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQueryToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

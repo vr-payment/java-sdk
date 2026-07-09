@@ -29,11 +29,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.vrpayment.sdk.model.ExpressCheckoutShippingOption;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -41,64 +36,74 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * ExpressCheckoutShippingAddressChangeResponse
+ * PaymentFacilitatorPricingProfileDto
  */
 @JsonPropertyOrder({
-  ExpressCheckoutShippingAddressChangeResponse.JSON_PROPERTY_ORDER_TOTAL,
-  ExpressCheckoutShippingAddressChangeResponse.JSON_PROPERTY_SHIPPING_OPTIONS
+  PaymentFacilitatorPricingProfileDto.JSON_PROPERTY_NAME,
+  PaymentFacilitatorPricingProfileDto.JSON_PROPERTY_ID
 })
 
-public class ExpressCheckoutShippingAddressChangeResponse {
-  public static final String JSON_PROPERTY_ORDER_TOTAL = "orderTotal";
+public class PaymentFacilitatorPricingProfileDto {
+  public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
-  private BigDecimal orderTotal;
+  private String name;
 
-  public static final String JSON_PROPERTY_SHIPPING_OPTIONS = "shippingOptions";
+  public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable
-  private List<ExpressCheckoutShippingOption> shippingOptions = new ArrayList<>();
+  private Long id;
 
-  public ExpressCheckoutShippingAddressChangeResponse() {
+  public PaymentFacilitatorPricingProfileDto() {
   }
-  /**
-   * Constructor with only readonly parameters
-   */
-  @JsonCreator
-  public ExpressCheckoutShippingAddressChangeResponse(
-    @JsonProperty(JSON_PROPERTY_ORDER_TOTAL) BigDecimal orderTotal, 
-    @JsonProperty(JSON_PROPERTY_SHIPPING_OPTIONS) List<ExpressCheckoutShippingOption> shippingOptions
-  ) {
-    this();
-    this.orderTotal = orderTotal;
-    this.shippingOptions = shippingOptions;
+
+  public PaymentFacilitatorPricingProfileDto name(@javax.annotation.Nullable String name) {
+    
+    this.name = name;
+    return this;
   }
 
   /**
-   * Get orderTotal
-   * @return orderTotal
+   * Get name
+   * @return name
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ORDER_TOTAL)
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BigDecimal getOrderTotal() {
-    return orderTotal;
+  public String getName() {
+    return name;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
+  }
+
+  public PaymentFacilitatorPricingProfileDto id(@javax.annotation.Nullable Long id) {
+    
+    this.id = id;
+    return this;
+  }
 
   /**
-   * Get shippingOptions
-   * @return shippingOptions
+   * Get id
+   * @return id
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHIPPING_OPTIONS)
+  @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<ExpressCheckoutShippingOption> getShippingOptions() {
-    return shippingOptions;
+  public Long getId() {
+    return id;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable Long id) {
+    this.id = id;
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -108,22 +113,22 @@ public class ExpressCheckoutShippingAddressChangeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExpressCheckoutShippingAddressChangeResponse expressCheckoutShippingAddressChangeResponse = (ExpressCheckoutShippingAddressChangeResponse) o;
-    return Objects.equals(this.orderTotal, expressCheckoutShippingAddressChangeResponse.orderTotal) &&
-        Objects.equals(this.shippingOptions, expressCheckoutShippingAddressChangeResponse.shippingOptions);
+    PaymentFacilitatorPricingProfileDto paymentFacilitatorPricingProfileDto = (PaymentFacilitatorPricingProfileDto) o;
+    return Objects.equals(this.name, paymentFacilitatorPricingProfileDto.name) &&
+        Objects.equals(this.id, paymentFacilitatorPricingProfileDto.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderTotal, shippingOptions);
+    return Objects.hash(name, id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExpressCheckoutShippingAddressChangeResponse {\n");
-    sb.append("    orderTotal: ").append(toIndentedString(orderTotal)).append("\n");
-    sb.append("    shippingOptions: ").append(toIndentedString(shippingOptions)).append("\n");
+    sb.append("class PaymentFacilitatorPricingProfileDto {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -171,23 +176,23 @@ public class ExpressCheckoutShippingAddressChangeResponse {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `orderTotal` to the URL query string
-    if (getOrderTotal() != null) {
+    // add `name` to the URL query string
+    if (getName() != null) {
       try {
-        joiner.add(String.format("%sorderTotal%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrderTotal()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
       }
     }
 
-    // add `shippingOptions` to the URL query string
-    if (getShippingOptions() != null) {
-      for (int i = 0; i < getShippingOptions().size(); i++) {
-        if (getShippingOptions().get(i) != null) {
-          joiner.add(getShippingOptions().get(i).toUrlQueryString(String.format("%sshippingOptions%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
-        }
+    // add `id` to the URL query string
+    if (getId() != null) {
+      try {
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
       }
     }
 

@@ -34,23 +34,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets ExpressCheckoutSessionState
+ * Gets or Sets WalleejoinPartnershipType
  */
-public enum ExpressCheckoutSessionState {
+public enum WalleejoinPartnershipType {
   
-  PENDING("PENDING"),
+  AFFILIATE("AFFILIATE"),
   
-  APPROVED("APPROVED"),
-  
-  PROCESSING("PROCESSING"),
-  
-  AUTHORIZED("AUTHORIZED"),
-  
-  FAILED("FAILED");
+  ISV("ISV");
 
   private String value;
 
-  ExpressCheckoutSessionState(String value) {
+  WalleejoinPartnershipType(String value) {
     this.value = value;
   }
 
@@ -65,8 +59,8 @@ public enum ExpressCheckoutSessionState {
   }
 
   @JsonCreator
-  public static ExpressCheckoutSessionState fromValue(String value) {
-    for (ExpressCheckoutSessionState b : ExpressCheckoutSessionState.values()) {
+  public static WalleejoinPartnershipType fromValue(String value) {
+    for (WalleejoinPartnershipType b : WalleejoinPartnershipType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
