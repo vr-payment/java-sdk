@@ -29,10 +29,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.vrpayment.sdk.model.UserSpaceRole;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -40,83 +38,82 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * UserSpaceRoleListResponse
+ * InvoiceReconciliationRecordType
  */
 @JsonPropertyOrder({
-  UserSpaceRoleListResponse.JSON_PROPERTY_DATA,
-  UserSpaceRoleListResponse.JSON_PROPERTY_HAS_MORE,
-  UserSpaceRoleListResponse.JSON_PROPERTY_LIMIT
+  InvoiceReconciliationRecordType.JSON_PROPERTY_NAME,
+  InvoiceReconciliationRecordType.JSON_PROPERTY_DESCRIPTION,
+  InvoiceReconciliationRecordType.JSON_PROPERTY_ID
 })
-@JsonTypeName("User_Space_Role_List_Response")
 
-public class UserSpaceRoleListResponse {
-  public static final String JSON_PROPERTY_DATA = "data";
+public class InvoiceReconciliationRecordType {
+  public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
-  private List<UserSpaceRole> data = new ArrayList<>();
+  private Map<String, String> name = new HashMap<>();
 
-  public static final String JSON_PROPERTY_HAS_MORE = "hasMore";
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @javax.annotation.Nullable
-  private Boolean hasMore;
+  private Map<String, String> description = new HashMap<>();
 
-  public static final String JSON_PROPERTY_LIMIT = "limit";
+  public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long id;
 
-  public UserSpaceRoleListResponse() {
+  public InvoiceReconciliationRecordType() {
   }
   /**
    * Constructor with only readonly parameters
    */
   @JsonCreator
-  public UserSpaceRoleListResponse(
-    @JsonProperty(JSON_PROPERTY_DATA) List<UserSpaceRole> data, 
-    @JsonProperty(JSON_PROPERTY_HAS_MORE) Boolean hasMore, 
-    @JsonProperty(JSON_PROPERTY_LIMIT) Integer limit
+  public InvoiceReconciliationRecordType(
+    @JsonProperty(JSON_PROPERTY_NAME) Map<String, String> name, 
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION) Map<String, String> description, 
+    @JsonProperty(JSON_PROPERTY_ID) Long id
   ) {
     this();
-    this.data = data;
-    this.hasMore = hasMore;
-    this.limit = limit;
+    this.name = name;
+    this.description = description;
+    this.id = id;
   }
 
   /**
-   * An array containing the actual response objects.
-   * @return data
+   * The localized name of the object.
+   * @return name
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<UserSpaceRole> getData() {
-    return data;
-  }
-
-
-
-  /**
-   * Whether there are more objects available after this set. If false, there are no more objects to retrieve.
-   * @return hasMore
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HAS_MORE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getHasMore() {
-    return hasMore;
+  public Map<String, String> getName() {
+    return name;
   }
 
 
 
   /**
-   * The applied limit on the number of objects returned.
-   * @return limit
+   * The localized description of the object.
+   * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LIMIT)
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getLimit() {
-    return limit;
+  public Map<String, String> getDescription() {
+    return description;
+  }
+
+
+
+  /**
+   * A unique identifier for the object.
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Long getId() {
+    return id;
   }
 
 
@@ -129,24 +126,24 @@ public class UserSpaceRoleListResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserSpaceRoleListResponse userSpaceRoleListResponse = (UserSpaceRoleListResponse) o;
-    return Objects.equals(this.data, userSpaceRoleListResponse.data) &&
-        Objects.equals(this.hasMore, userSpaceRoleListResponse.hasMore) &&
-        Objects.equals(this.limit, userSpaceRoleListResponse.limit);
+    InvoiceReconciliationRecordType invoiceReconciliationRecordType = (InvoiceReconciliationRecordType) o;
+    return Objects.equals(this.name, invoiceReconciliationRecordType.name) &&
+        Objects.equals(this.description, invoiceReconciliationRecordType.description) &&
+        Objects.equals(this.id, invoiceReconciliationRecordType.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, hasMore, limit);
+    return Objects.hash(name, description, id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserSpaceRoleListResponse {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
-    sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
+    sb.append("class InvoiceReconciliationRecordType {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -194,30 +191,38 @@ public class UserSpaceRoleListResponse {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `data` to the URL query string
-    if (getData() != null) {
-      for (int i = 0; i < getData().size(); i++) {
-        if (getData().get(i) != null) {
-          joiner.add(getData().get(i).toUrlQueryString(String.format("%sdata%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+    // add `name` to the URL query string
+    if (getName() != null) {
+      for (String _key : getName().keySet()) {
+        try {
+          joiner.add(String.format("%sname%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getName().get(_key), URLEncoder.encode(String.valueOf(getName().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
         }
       }
     }
 
-    // add `hasMore` to the URL query string
-    if (getHasMore() != null) {
-      try {
-        joiner.add(String.format("%shasMore%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHasMore()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
+    // add `description` to the URL query string
+    if (getDescription() != null) {
+      for (String _key : getDescription().keySet()) {
+        try {
+          joiner.add(String.format("%sdescription%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getDescription().get(_key), URLEncoder.encode(String.valueOf(getDescription().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
       }
     }
 
-    // add `limit` to the URL query string
-    if (getLimit() != null) {
+    // add `id` to the URL query string
+    if (getId() != null) {
       try {
-        joiner.add(String.format("%slimit%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLimit()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
