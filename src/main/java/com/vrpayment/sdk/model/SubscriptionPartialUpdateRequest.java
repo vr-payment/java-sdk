@@ -36,74 +36,43 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * PaymentTerminalUpdate
+ * SubscriptionPartialUpdateRequest
  */
 @JsonPropertyOrder({
-  PaymentTerminalUpdate.JSON_PROPERTY_NAME,
-  PaymentTerminalUpdate.JSON_PROPERTY_VERSION
+  SubscriptionPartialUpdateRequest.JSON_PROPERTY_DESCRIPTION
 })
-@JsonTypeName("PaymentTerminal.Update")
 
-public class PaymentTerminalUpdate {
-  public static final String JSON_PROPERTY_NAME = "name";
+public class SubscriptionPartialUpdateRequest {
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @javax.annotation.Nullable
-  private String name;
+  private String description;
 
-  public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nonnull
-  private Integer version;
-
-  public PaymentTerminalUpdate() {
+  public SubscriptionPartialUpdateRequest() {
   }
 
-  public PaymentTerminalUpdate name(@javax.annotation.Nullable String name) {
+  public SubscriptionPartialUpdateRequest description(@javax.annotation.Nullable String description) {
     
-    this.name = name;
+    this.description = description;
     return this;
   }
 
   /**
-   * The name used to identify the payment terminal.
-   * @return name
+   * A description used to identify the subscription.
+   * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getName() {
-    return name;
+  public String getDescription() {
+    return description;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
-    this.name = name;
-  }
-
-  public PaymentTerminalUpdate version(@javax.annotation.Nonnull Integer version) {
-    
-    this.version = version;
-    return this;
-  }
-
-  /**
-   * The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-   * @return version
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Integer getVersion() {
-    return version;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVersion(@javax.annotation.Nonnull Integer version) {
-    this.version = version;
+  public void setDescription(@javax.annotation.Nullable String description) {
+    this.description = description;
   }
 
   @Override
@@ -114,22 +83,20 @@ public class PaymentTerminalUpdate {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PaymentTerminalUpdate paymentTerminalUpdate = (PaymentTerminalUpdate) o;
-    return Objects.equals(this.name, paymentTerminalUpdate.name) &&
-        Objects.equals(this.version, paymentTerminalUpdate.version);
+    SubscriptionPartialUpdateRequest subscriptionPartialUpdateRequest = (SubscriptionPartialUpdateRequest) o;
+    return Objects.equals(this.description, subscriptionPartialUpdateRequest.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, version);
+    return Objects.hash(description);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PaymentTerminalUpdate {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("class SubscriptionPartialUpdateRequest {\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -177,20 +144,10 @@ public class PaymentTerminalUpdate {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `name` to the URL query string
-    if (getName() != null) {
+    // add `description` to the URL query string
+    if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `version` to the URL query string
-    if (getVersion() != null) {
-      try {
-        joiner.add(String.format("%sversion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVersion()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -32,7 +32,7 @@ import com.vrpayment.sdk.model.PaymentTerminal;
 import com.vrpayment.sdk.model.PaymentTerminalActivationStatusDetailSearchResponse;
 import com.vrpayment.sdk.model.PaymentTerminalCreationRequest;
 import com.vrpayment.sdk.model.PaymentTerminalTransactionSummaryReference;
-import com.vrpayment.sdk.model.PaymentTerminalUpdate;
+import com.vrpayment.sdk.model.PaymentTerminalUpdateRequest;
 import com.vrpayment.sdk.model.RestApiErrorResponse;
 import java.util.Set;
 import com.vrpayment.sdk.model.SortingOrder;
@@ -641,15 +641,15 @@ public class PaymentTerminalsService extends BaseApi {
    
    * @param id  (required)
    * @param space Specifies the ID of the space the operation should be executed in. (required)
-   * @param paymentTerminalUpdate  (required)
+   * @param paymentTerminalUpdateRequest  (required)
    * @param expand  (optional)
    * @return PaymentTerminal
    * @throws ApiException if fails to make API call
    * 
    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#patchPaymentTerminalsId">Update a payment terminal Documentation</a>
    */
-  public PaymentTerminal patchPaymentTerminalsId(@javax.annotation.Nonnull Long id, @javax.annotation.Nonnull Long space, @javax.annotation.Nonnull PaymentTerminalUpdate paymentTerminalUpdate, @javax.annotation.Nullable Set<String> expand) throws ApiException {
-    return this.patchPaymentTerminalsId(id, space, paymentTerminalUpdate, expand, Collections.emptyMap());
+  public PaymentTerminal patchPaymentTerminalsId(@javax.annotation.Nonnull Long id, @javax.annotation.Nonnull Long space, @javax.annotation.Nonnull PaymentTerminalUpdateRequest paymentTerminalUpdateRequest, @javax.annotation.Nullable Set<String> expand) throws ApiException {
+    return this.patchPaymentTerminalsId(id, space, paymentTerminalUpdateRequest, expand, Collections.emptyMap());
   }
 
 
@@ -659,7 +659,7 @@ public class PaymentTerminalsService extends BaseApi {
    
    * @param id  (required)
    * @param space Specifies the ID of the space the operation should be executed in. (required)
-   * @param paymentTerminalUpdate  (required)
+   * @param paymentTerminalUpdateRequest  (required)
    * @param expand  (optional)
    * @param additionalHeaders The additional headers for this call
    * @return PaymentTerminal
@@ -667,8 +667,8 @@ public class PaymentTerminalsService extends BaseApi {
    * 
    * @see <a href="https://gateway.vr-payment.de/doc/api/web-service#patchPaymentTerminalsId">Update a payment terminal Documentation</a>
    */
-  public PaymentTerminal patchPaymentTerminalsId(@javax.annotation.Nonnull Long id, @javax.annotation.Nonnull Long space, @javax.annotation.Nonnull PaymentTerminalUpdate paymentTerminalUpdate, @javax.annotation.Nullable Set<String> expand, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = paymentTerminalUpdate;
+  public PaymentTerminal patchPaymentTerminalsId(@javax.annotation.Nonnull Long id, @javax.annotation.Nonnull Long space, @javax.annotation.Nonnull PaymentTerminalUpdateRequest paymentTerminalUpdateRequest, @javax.annotation.Nullable Set<String> expand, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = paymentTerminalUpdateRequest;
     
     // verify the required parameter 'id' is set
     if (id == null) {
@@ -680,9 +680,9 @@ public class PaymentTerminalsService extends BaseApi {
       throw new ApiException(400, "Missing the required parameter 'space' when calling patchPaymentTerminalsId");
     }
     
-    // verify the required parameter 'paymentTerminalUpdate' is set
-    if (paymentTerminalUpdate == null) {
-      throw new ApiException(400, "Missing the required parameter 'paymentTerminalUpdate' when calling patchPaymentTerminalsId");
+    // verify the required parameter 'paymentTerminalUpdateRequest' is set
+    if (paymentTerminalUpdateRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'paymentTerminalUpdateRequest' when calling patchPaymentTerminalsId");
     }
     
     // create path and map variables
